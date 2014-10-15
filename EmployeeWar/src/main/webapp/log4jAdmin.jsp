@@ -36,7 +36,7 @@
       String containsFilter = "Contains";
       String beginsWithFilter = "Begins With";
 
-      String[] logLevels = { "debug", "info", "warn", "error", "fatal", "off" };
+      String[] logLevels = { "debug", "info", "warn", "error", "fatal", "trace","off" };
 
       String targetOperation   = (String)request.getParameter("operation");
       String targetLogger      = (String)request.getParameter("logger");
@@ -136,7 +136,7 @@
           <%
             for(int cnt=0; cnt<logLevels.length; cnt++)
             {
-              String url = request.getContextPath() + "/log4jAdmin.jsp?operation=changeLogLevel&logger=" + loggerName + "&newLogLevel=" + logLevels[cnt] + "&logNameFilter=" + (logNameFilter != null ? logNameFilter : "") + "&logNameFilterType=" + (logNameFilterType != null ? logNameFilterType : "");
+              String url = request.getContextPath() + "/log4jAdmin?operation=changeLogLevel&logger=" + loggerName + "&newLogLevel=" + logLevels[cnt] + "&logNameFilter=" + (logNameFilter != null ? logNameFilter : "") + "&logNameFilterType=" + (logNameFilterType != null ? logNameFilterType : "");
 
               if(logger.getLevel() == Level.toLevel(logLevels[cnt]) || logger.getEffectiveLevel() == Level.toLevel(logLevels[cnt]))
               {

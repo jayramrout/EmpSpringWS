@@ -4,6 +4,16 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>MyCompany HR Holiday Service</display-name>
 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+              /WEB-INF/spring/employee-resource-config.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>spring-ws</servlet-name>
 		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
@@ -11,10 +21,25 @@
 			<param-name>transformWsdlLocations</param-name>
 			<param-value>true</param-value>
 		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/spring/employee-ws-context.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>spring-ws</servlet-name>
 		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>log4jAdmin</servlet-name>
+		<jsp-file>/log4jAdmin.jsp</jsp-file>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>log4jAdmin</servlet-name>
+		<url-pattern>/log4jAdmin</url-pattern>
 	</servlet-mapping>
 </web-app>

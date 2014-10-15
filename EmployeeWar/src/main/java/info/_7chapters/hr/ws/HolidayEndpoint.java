@@ -1,21 +1,29 @@
 package info._7chapters.hr.ws;
 
-import org.springframework.ws.server.endpoint.annotation.Endpoint;
+import info._7chapters.hr.schemas.HolidayRequest;
+import info._7chapters.hr.service.HumanResourceService;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
-import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import javax.servlet.http.HttpServletRequest;
 
-import info._7chapters.hr.service.HumanResourceService;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
 import org.jdom2.filter.Filters;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ws.server.endpoint.annotation.Endpoint;
+import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.ws.soap.SoapHeader;
+import org.springframework.ws.transport.context.TransportContext;
+import org.springframework.ws.transport.context.TransportContextHolder;
+import org.springframework.ws.transport.http.HttpServletConnection;
 
 @Endpoint
 public class HolidayEndpoint {
@@ -50,7 +58,27 @@ public class HolidayEndpoint {
         String name = firstNameExpression.evaluateFirst(holidayRequest).getText() + " " + lastNameExpression.evaluateFirst(holidayRequest).getText();
 
         humanResourceService.bookHoliday(startDate, endDate, name);
+        
+        TransportContext context = TransportContextHolder.getTransportContext();
+        HttpServletConnection connection = (HttpServletConnection )context.getConnection();
+        HttpServletRequest request = connection.getHttpServletRequest();
+        String ipAddress = request.getRemoteAddr();
+        System.out.println("ipAddress "+ ipAddress);
     }
+    
+   /* @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
+    @ResponsePayload
+    public HolidayRequest handleHolidayRequestWithJAXB2(@RequestPayload HolidayRequest holidayRequest) throws Exception {                        
+        System.out.println("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
+        return holidayRequest;
+    }*/
+
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
+    @ResponsePayload
+    public void handleHolidayRequestWithStAXSoapHeader(@RequestPayload HolidayRequest holidayRequest , SoapHeader header) throws Exception {
+    	System.out.println(header);
+        System.out.println("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
+    }*/
 
     private Date parseDate(XPathExpression<Element> expression, Element element) throws ParseException {
         Element result = expression.evaluateFirst(element);

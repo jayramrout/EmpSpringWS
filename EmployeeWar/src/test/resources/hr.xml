@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hr:HolidayRequest xmlns:hr="http://_7chapters.info/hr/schemas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://_7chapters.info/hr/schemas hr.xsd ">
+  <hr:Holiday>
+    <hr:StartDate>2001-01-01</hr:StartDate>
+    <hr:EndDate>2001-01-01</hr:EndDate>
+  </hr:Holiday>
+  <hr:Employee>
+    <hr:Number>100</hr:Number>
+    <hr:FirstName>Jayram</hr:FirstName>
+    <hr:LastName>Rout</hr:LastName>
+  </hr:Employee>
+</hr:HolidayRequest>
