@@ -7,28 +7,10 @@
 	<packaging>pom</packaging>
 	<name>Employee Parent Object Model</name>
 
-	<properties>
-		<java.version>1.6</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 	<modules>
 		<module>../EmployeeDao</module>
 		<module>../EmployeeService</module>
 		<module>../EmployeeWar</module>
 		<module>../EmployeeEar</module>
 	</modules>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
