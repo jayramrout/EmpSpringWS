@@ -33,7 +33,7 @@
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 
-	<!-- <servlet>
+	<servlet>
 		<servlet-name>log4jAdmin</servlet-name>
 		<jsp-file>/log4jAdmin.jsp</jsp-file>
 		<load-on-startup>3</load-on-startup>
@@ -41,5 +41,5 @@
 	<servlet-mapping>
 		<servlet-name>log4jAdmin</servlet-name>
 		<url-pattern>/log4jAdmin</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 </web-app>
