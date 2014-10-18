@@ -29,7 +29,7 @@ public class EmployeeTest {
 		wsGatewaySupport = (WebServiceTemplate)applicationContext.getBean("wsGatewaySupport");	
 	}
 
-	@After
+//	@After
 	public void tearDown() throws Exception {
 		wsGatewaySupport.setDefaultUri(URI);
 		Result result = new StringResult();
