@@ -18,7 +18,7 @@ import org.springframework.xml.transform.StringSource;
 
 public class EmployeeTest {
 
-	private static String URI = "http://localhost:8082/EmployeeWar/holidayService/holiday/";
+	private static String URI = "http://localhost:8080/EmployeeWar/";
 	private ApplicationContext applicationContext;
 	private static WebServiceTemplate wsGatewaySupport ;
 	
