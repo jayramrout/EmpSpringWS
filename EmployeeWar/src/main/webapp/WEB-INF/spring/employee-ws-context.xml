@@ -13,5 +13,18 @@
 		locationUri="/holidayService/" targetNamespace="http://_7chapters.info/hr/definitions">
 		<sws:xsd location="/WEB-INF/xsd/hr.xsd" />
 	</sws:dynamic-wsdl>
-
+	
+	<sws:interceptors>
+		<!-- Log the WS messages using this Global interceptor -->
+		<bean class="info._7chapters.hr.ws.log.EmployeePayLoadLogging"/>
+	
+		<!-- Schema validation--> 
+		<bean id="validatingInterceptor"
+			class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
+			<property name="schemas" value="/WEB-INF/xsd/hr.xsd"/>
+			<property name="validateRequest" value="true" />
+			<property name="validateResponse" value="true" />
+		</bean>
+	</sws:interceptors>
+	
 </beans>
