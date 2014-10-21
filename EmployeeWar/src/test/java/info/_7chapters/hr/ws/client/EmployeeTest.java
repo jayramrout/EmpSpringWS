@@ -35,7 +35,7 @@ public class EmployeeTest {
 	public void testEmployeeWS() throws Exception {
 		Result result = new StringResult();
 		
-		InputStream is = ClassLoader.class.getResourceAsStream("/emp.xml"); 
+		InputStream is = ClassLoader.class.getResourceAsStream("/hr.xml"); 
 		String str = IOUtils.toString(is);
 		Source payload = new StringSource(str);
 		wsGatewaySupport.sendSourceAndReceiveToResult(URI,payload, result);
