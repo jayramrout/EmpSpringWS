@@ -3,7 +3,6 @@
 	<name>EmployeeService</name>
 	<comment></comment>
 	<projects>
-		<project>EmployeeDao</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

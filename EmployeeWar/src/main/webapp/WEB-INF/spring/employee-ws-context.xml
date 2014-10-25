@@ -6,25 +6,12 @@
   http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="info._7chapters.hr" />
-
+	<context:component-scan base-package="info._7chapters.hr.ws" />
+	<import resource="employee-service-context.xml"/>
 	<sws:annotation-driven />
 	<sws:dynamic-wsdl id="holiday" portTypeName="HumanResource"
 		locationUri="/holidayService/" targetNamespace="http://_7chapters.info/hr/definitions">
 		<sws:xsd location="/WEB-INF/xsd/hr.xsd" />
 	</sws:dynamic-wsdl>
-	
-	<sws:interceptors>
-		<!-- Log the WS messages using this Global interceptor -->
-		<bean class="info._7chapters.hr.ws.log.EmployeePayLoadLogging"/>
-	
-		<!-- Schema validation--> 
-		<bean id="validatingInterceptor"
-			class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
-			<property name="schemas" value="/WEB-INF/xsd/hr.xsd"/>
-			<property name="validateRequest" value="true" />
-			<property name="validateResponse" value="true" />
-		</bean>
-	</sws:interceptors>
-	
+
 </beans>

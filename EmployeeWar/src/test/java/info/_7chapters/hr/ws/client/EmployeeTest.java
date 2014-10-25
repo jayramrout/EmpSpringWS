@@ -18,7 +18,7 @@ import org.springframework.xml.transform.StringSource;
 
 public class EmployeeTest {
 
-	private static String URI = "http://localhost:8081/EmployeeWar/";
+	private static String URI = "http://localhost:8082/EmployeeWar/";
 	private ApplicationContext applicationContext;
 	private static WebServiceTemplate wsGatewaySupport ;
 	
@@ -26,26 +26,27 @@ public class EmployeeTest {
 	public void setUp() throws Exception {
 		applicationContext = new ClassPathXmlApplicationContext(
 				new String[] { "classpath:test-application-context.xml" });
-		wsGatewaySupport = (WebServiceTemplate)applicationContext.getBean("wsGatewaySupport");
-		wsGatewaySupport.setDefaultUri(URI);
+		wsGatewaySupport = (WebServiceTemplate)applicationContext.getBean("wsGatewaySupport");	
 	}
 
-
-	@Test
-	public void testEmployeeWS() throws Exception {
+	@After
+	public void tearDown() throws Exception {
+		wsGatewaySupport.setDefaultUri(URI);
 		Result result = new StringResult();
 		
 		InputStream is = ClassLoader.class.getResourceAsStream("/hr.xml"); 
 		String str = IOUtils.toString(is);
+//		System.out.println(str);
 		Source payload = new StringSource(str);
 		wsGatewaySupport.sendSourceAndReceiveToResult(URI,payload, result);
 		System.out.println(result);
+	}
+
+	@Test
+	public void testEmployeeWS() {
 		
 		Assert.assertNotNull("");
-	}
-	
-	@After
-	public void tearDown() throws Exception {
+//		fail("Not yet implemented");
 	}
 
 }

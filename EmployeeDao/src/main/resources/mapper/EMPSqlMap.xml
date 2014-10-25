@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="info._7chapters.hr.dao.EmployeeDAO">
+    <resultMap   id="EmployeeResult" type="Employee" >
+     	<result property="employeeId" column="EMPLOYEE_ID"  /> 
+		<result property="firstName" column="FIRST_NAME" />
+        <result property="lastName" column="LAST_TYPE" />
+	</resultMap>
+		
+	<select id="getEmployeeDetails" parameterType="int" resultMap="EmployeeResult">
+  	  <![CDATA[
+  	  	SELECT EMPLOYEE_ID , FIRST_NAME , LAST_NAME FROM EMPLOYEES WHERE EMPLOYEE_ID = #{id}
+   	  ]]>
+    </select>
+</mapper>
+

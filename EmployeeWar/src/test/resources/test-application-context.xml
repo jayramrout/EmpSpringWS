@@ -23,10 +23,10 @@
 		<property name="connectionTimeout" value="8000"/>
 	</bean>
 	<!-- <context:component-scan base-package="info._7chapters.hr.ws.client"/> -->
-	<oxm:jaxb2-marshaller id="hrMarUnmarshaller" contextPath="info._7chapters.hr.schemas"/>
+	<oxm:jaxb2-marshaller id="employeeMarUnmarshaller" contextPath="info._7chapters.hr.schemas"/>
 	<bean id="wsGatewaySupport" class="org.springframework.ws.client.core.WebServiceTemplate">
-		<property name="marshaller" ref="hrMarUnmarshaller"/>
-        <property name="unmarshaller" ref="hrMarUnmarshaller"/>
+		<property name="marshaller" ref="employeeMarUnmarshaller"/>
+        <property name="unmarshaller" ref="employeeMarUnmarshaller"/>
          <property name="messageSenders">
         	<list>
         		<ref bean="httpMsgSender"/>
