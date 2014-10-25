@@ -7,7 +7,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-              /WEB-INF/spring/employee-resource-config.xml
+              /WEB-INF/spring/employee-service-context.xml
 		</param-value>
 	</context-param>
 	<listener>
