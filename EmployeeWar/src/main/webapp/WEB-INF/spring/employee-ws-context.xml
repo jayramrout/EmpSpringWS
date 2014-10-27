@@ -9,9 +9,13 @@
 	<context:component-scan base-package="info._7chapters.hr.ws" />
 	<!-- <import resource="employee-service-context.xml"/> -->
 	<sws:annotation-driven />
-	<sws:dynamic-wsdl id="holiday" portTypeName="HumanResource"
-		locationUri="/holidayService/" targetNamespace="http://_7chapters.info/hr/definitions">
-		<sws:xsd location="/WEB-INF/xsd/hr.xsd" />
-	</sws:dynamic-wsdl>
-
+	<!-- <sws:dynamic-wsdl id="holiday" portTypeName="HumanResource" locationUri="/holidayService/" 
+		targetNamespace="http://_7chapters.info/hr/definitions"> <sws:xsd location="/WEB-INF/xsd/hr.xsd" 
+		/> </sws:dynamic-wsdl> -->
+	<sws:static-wsdl id="holiday" location="/WEB-INF/wsdl/hr.wsdl" />
+	<sws:interceptors>
+		<sws:payloadRoot namespaceUri="http://_7chapters.info/hr/schemas">
+			<bean class="info._7chapters.hr.ws.log.EmployeePayLoadLogging" />
+		</sws:payloadRoot>
+	</sws:interceptors>
 </beans>
