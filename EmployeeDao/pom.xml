@@ -8,4 +8,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../Employee/parent/pom.xml</relativePath>
 	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+		</dependency>
+	</dependencies>
 </project>

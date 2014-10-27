@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * The persistent class for the EMPLOYEES database table.
  * 
@@ -148,5 +150,8 @@ public class Employee implements Serializable {
 
 		return employee;
 	}
-
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }

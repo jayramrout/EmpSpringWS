@@ -7,12 +7,20 @@
     <resultMap   id="EmployeeResult" type="Employee" >
      	<result property="employeeId" column="EMPLOYEE_ID"  /> 
 		<result property="firstName" column="FIRST_NAME" />
-        <result property="lastName" column="LAST_TYPE" />
+        <result property="lastName" column="LAST_NAME" />
+        <result property="email" column="EMAIL"/>
+        <result property="phoneNumber" column="PHONE_NUMBER"/>
+		<result property="hireDate" column="HIRE_DATE"/>
+		<result property="jobId" column="JOB_ID"/>
+		<result property="salary" column="SALARY"/>
+		<result property="commissionPct" column="COMMISSION_PCT"/>
+		<result property="managerId" column="MANAGER_ID"/>		
+		<result property="departmentId" column="DEPARTMENT_ID"/>
 	</resultMap>
 		
 	<select id="getEmployeeDetails" parameterType="int" resultMap="EmployeeResult">
   	  <![CDATA[
-  	  	SELECT EMPLOYEE_ID , FIRST_NAME , LAST_NAME FROM EMPLOYEES WHERE EMPLOYEE_ID = #{id}
+  	  	SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = #{id}
    	  ]]>
     </select>
 </mapper>
