@@ -17,5 +17,11 @@
 		<sws:payloadRoot namespaceUri="http://_7chapters.info/hr/schemas">
 			<bean class="info._7chapters.hr.ws.log.EmployeePayLoadLogging" />
 		</sws:payloadRoot>
+		<bean id="validatingInterceptor"
+			class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
+			<property name="schema" value="/WEB-INF/xsd/hr.xsd" />
+			<property name="validateRequest" value="false" />
+			<property name="validateResponse" value="true" />
+		</bean>
 	</sws:interceptors>
 </beans>
