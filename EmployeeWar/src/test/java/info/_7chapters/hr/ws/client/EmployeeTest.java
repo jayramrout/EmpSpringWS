@@ -18,7 +18,7 @@ import org.springframework.xml.transform.StringSource;
 
 public class EmployeeTest {
 
-	private static String URI = "http://localhost:8082/EmployeeWar/";
+	private static String URI = "http://localhost:8080/EmployeeWar/";
 	private ApplicationContext applicationContext;
 	private static WebServiceTemplate wsGatewaySupport ;
 	
@@ -40,6 +40,8 @@ public class EmployeeTest {
 		Source payload = new StringSource(str);
 		wsGatewaySupport.sendSourceAndReceiveToResult(URI,payload, result);
 		System.out.println(result);
+		
+		
 	}
 
 	@Test

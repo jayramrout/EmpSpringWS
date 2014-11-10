@@ -14,14 +14,57 @@
 		/> </sws:dynamic-wsdl> -->
 	<sws:static-wsdl id="holiday" location="/WEB-INF/wsdl/hr.wsdl" />
 	<sws:interceptors>
+		<!-- <bean class="info._7chapters.hr.ws.log.GlobalPayLoadLoggingInterceptor" /> -->
 		<sws:payloadRoot namespaceUri="http://_7chapters.info/hr/schemas">
 			<bean class="info._7chapters.hr.ws.log.EmployeePayLoadLogging" />
 		</sws:payloadRoot>
+		
+		<!-- One of the benefits of using a contract-first development style is that we can use the schema to validate incoming and outgoing XML messages. 
+		Spring-WS facilitates this with the PayloadValidatingInterceptor. -->
 		<bean id="validatingInterceptor"
 			class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
 			<property name="schema" value="/WEB-INF/xsd/hr.xsd" />
 			<property name="validateRequest" value="false" />
 			<property name="validateResponse" value="true" />
 		</bean>
+		
+		<!-- 
+		When developing a Web service, it can be useful to log the incoming and outgoing XML messages. SWS facilitates this with the PayloadLoggingInterceptor 
+		and SoapEnvelopeLoggingInterceptor classes. The former logs just the payload of the message to the Commons Logging Log; the latter logs the entire 
+		SOAP envelope, including SOAP headers.
+		
+		<bean class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"/>
+		<bean class="org.springframework.ws.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor"/>
+		 -->
+		
+		<!-- 
+		The SoapFaultMappingExceptionResolver is a more sophisticated implementation. This resolver enables you to take the class name of any exception that might be 
+		thrown and map it to a SOAP Fault.
+		The key values and default endpoint use the format faultCode,faultString,locale, where only the fault code is required. If the fault string is not set, 
+		it will default to the exception message. If the language is not set, it will default to English. The above configuration will map exceptions of type 
+		ValidationFailureException to a client-side SOAP Fault with a fault string "Invalid request".
+		We can also use SoapFaultAnnotationExceptionResolver for eg : BusinessException for this project.
+		
+		Below is the fault message to the client
+		<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    	<SOAP-ENV:Body>
+       		<SOAP-ENV:Fault>
+           		<faultcode>SOAP-ENV:Client</faultcode>
+           		<faultstring>Invalid request</faultstring>
+       		</SOAP-ENV:Fault>
+    	</SOAP-ENV:Body>
+		</SOAP-ENV:Envelope>
+
+		<bean id="exceptionResolver"
+        class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
+	        <property name="defaultFault" value="SERVER"/>
+	        <property name="exceptionMappings">
+	            <value>
+	                org.springframework.oxm.ValidationFailureException=CLIENT,Invalid request
+	            </value>
+	        </property>
+    	</bean>
+    	-->
+    			
 	</sws:interceptors>
 </beans>

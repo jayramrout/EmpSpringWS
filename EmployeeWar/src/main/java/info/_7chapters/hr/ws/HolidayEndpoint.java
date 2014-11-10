@@ -7,6 +7,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+import org.apache.log4j.Logger;
 //import org.springframework.ws.transport.context.TransportContext;
 //import org.springframework.ws.transport.context.TransportContextHolder;
 //import org.springframework.ws.transport.http.HttpServletConnection;
@@ -26,6 +28,7 @@ import org.springframework.ws.soap.SoapHeader;
 
 @Endpoint
 public class HolidayEndpoint {
+	private static Logger logger = Logger.getLogger(HolidayEndpoint.class);
 	private static final String NAMESPACE_URI = "http://_7chapters.info/hr/schemas";
 
 /*    private XPathExpression<Element> startDateExpression;
@@ -39,7 +42,7 @@ public class HolidayEndpoint {
     @Autowired
     public HolidayEndpoint(HumanResourceService humanResourceService) throws JDOMException {
         this.humanResourceService = humanResourceService;
-
+        logger.info(" In Constructor");
 /*        Namespace namespace = Namespace.getNamespace("hr", NAMESPACE_URI);
         XPathFactory xPathFactory = XPathFactory.instance();
         startDateExpression = xPathFactory.compile("//hr:StartDate", Filters.element(), null, namespace);
@@ -67,14 +70,14 @@ public class HolidayEndpoint {
    /* @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
     @ResponsePayload
     public HolidayRequest handleHolidayRequestWithJAXB2(@RequestPayload HolidayRequest holidayRequest) throws Exception {                        
-        System.out.println("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
+        logger.debug("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
         return holidayRequest;
     }*/
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
     public void handleHolidayRequestWithSoapHeader(@RequestPayload HolidayRequest holidayRequest , SoapHeader header) throws Exception {
-    	System.out.println(header);
-        System.out.println("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
+    	logger.debug(header);
+    	logger.debug("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
         humanResourceService.bookHoliday(null, null, holidayRequest.getEmployee().getFirstName());
     }
 

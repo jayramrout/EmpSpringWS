@@ -21,10 +21,20 @@
  	
 	<bean id="httpMsgSender" class="org.springframework.ws.transport.http.CommonsHttpMessageSender">
 		<property name="connectionTimeout" value="8000"/>
+		<!-- <property name="credentials">
+        	<bean class="org.apache.http.auth.UsernamePasswordCredentials">
+            	<constructor-arg value="jayram:password"/>
+        	</bean>
+        </property> -->
 	</bean>
 	<!-- <context:component-scan base-package="info._7chapters.hr.ws.client"/> -->
 	<oxm:jaxb2-marshaller id="employeeMarUnmarshaller" contextPath="info._7chapters.hr.schemas"/>
+	
+	<!-- To add an attachment to a response payload in Spring-WS used messageFactory and add it to the WebServiceTemplate bean-->
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+	
 	<bean id="wsGatewaySupport" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<constructor-arg ref="messageFactory"/>
 		<property name="marshaller" ref="employeeMarUnmarshaller"/>
         <property name="unmarshaller" ref="employeeMarUnmarshaller"/>
          <property name="messageSenders">
