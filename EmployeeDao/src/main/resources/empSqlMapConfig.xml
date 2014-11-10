@@ -4,12 +4,47 @@
 
 <configuration>
 	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
 		<setting name="defaultExecutorType" value="REUSE" />
 		<setting name="defaultStatementTimeout" value="3000" />
 	</settings>
+
 	<typeAliases>
 		<typeAlias alias="Employee" type="info._7chapters.hr.domain.Employee" />
+		<typeAlias alias="customDateTypeHandler"
+			type="info._7chapters.hr.typehandler.CustomDateTypeHandler" />
+		<typeAlias alias="trim"
+			type="info._7chapters.hr.typehandler.StringTrimTypeHandler" />
+		<!-- use #{name,typeHandler=trim} in sqlMapping file -->
 	</typeAliases>
+
+	<!-- Seems like if the environments are giving in this config file then no need to add   <property name="dataSource" ref="empDataSource" /> in employee-data-context.xml file -->
+	<!-- But need to verify -->
+<!-- 	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+				<property name="username" value="HR" />
+				<property name="password" value="HR" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="MANAGED" />
+			<dataSource type="JNDI">
+				<property name="data_source" value="jdbc/EmployeeDB" />
+			</dataSource>
+		</environment>
+	</environments>
+ -->
+
+
 	<mappers>
 		<mapper resource="mapper/EMPSqlMap.xml"></mapper>
 	</mappers>
