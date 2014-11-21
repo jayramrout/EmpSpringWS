@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 import org.apache.log4j.Logger;
 //import org.springframework.ws.transport.context.TransportContext;
 //import org.springframework.ws.transport.context.TransportContextHolder;
@@ -23,10 +22,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 //import org.springframework.ws.server.endpoint.annotation.XPathParam;
-import org.springframework.ws.soap.SoapHeader;
 
-@Endpoint
+//@Endpoint
 public class HolidayEndpoint {
 	private static Logger logger = Logger.getLogger(HolidayEndpoint.class);
 	private static final String NAMESPACE_URI = "http://_7chapters.info/hr/schemas";
@@ -38,7 +37,6 @@ public class HolidayEndpoint {
 */    
 	private HumanResourceService humanResourceService;
     
-                                                                              
     @Autowired
     public HolidayEndpoint(HumanResourceService humanResourceService) throws JDOMException {
         this.humanResourceService = humanResourceService;
@@ -67,19 +65,19 @@ public class HolidayEndpoint {
     }*/
     
     
-   /* @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
     @ResponsePayload
     public HolidayRequest handleHolidayRequestWithJAXB2(@RequestPayload HolidayRequest holidayRequest) throws Exception {                        
         logger.debug("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
         return holidayRequest;
-    }*/
+    }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "HolidayRequest")  
     public void handleHolidayRequestWithSoapHeader(@RequestPayload HolidayRequest holidayRequest , SoapHeader header) throws Exception {
     	logger.debug(header);
     	logger.debug("holidayRequest.getEmployee().getFirstName() "+ holidayRequest.getEmployee().getFirstName());
         humanResourceService.bookHoliday(null, null, holidayRequest.getEmployee().getFirstName());
-    }
+    }*/
 
     /**
      * handleHolidayRequestWithXPathParam Does not work..need to check
