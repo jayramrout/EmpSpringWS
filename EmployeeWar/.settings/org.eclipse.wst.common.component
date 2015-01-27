@@ -5,10 +5,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/jaxb"/>
-        <dependent-module archiveName="EmployeeDao-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EmployeeDao/EmployeeDao">
+        <dependent-module archiveName="EmployeeDao-1.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EmployeeDao/EmployeeDao">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="EmployeeService-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EmployeeService/EmployeeService">
+        <dependent-module archiveName="EmployeeService-1.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EmployeeService/EmployeeService">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="EmployeeWar"/>

@@ -1,27 +1,34 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>EmployeeGateway</groupId>
-  <artifactId>EmployeeEar</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>ear</packaging>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-ear-plugin</artifactId>
-        <version>2.9</version>
-        <configuration>
-          <version>6</version>
-          <defaultLibBundleDir>lib</defaultLibBundleDir>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencies>
-  	<dependency>
-  		<groupId>EmployeeGateway</groupId>
-  		<artifactId>EmployeeWar</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  		<type>war</type>
-  	</dependency>
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>EmployeeEar</artifactId>
+	<packaging>ear</packaging>
+	
+	<parent>
+		<groupId>EmployeeGateway</groupId>
+		<artifactId>employee-parent</artifactId>
+		<version>${employee.ws.version}</version>
+		<relativePath>../Employee/parent/pom.xml</relativePath>
+	</parent>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>EmployeeGateway</groupId>
+			<artifactId>EmployeeWar</artifactId>
+			<version>${employee.ws.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
 </project>
