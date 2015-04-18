@@ -6,9 +6,9 @@
 	
 	<parent>
 		<groupId>EmployeeGateway</groupId>
-		<artifactId>employee-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
-		<relativePath>../Employee/parent/pom.xml</relativePath>
+		<artifactId>EmpSpringWS</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>pom.xml</relativePath>
 	</parent>
 
 	<dependencies>
@@ -122,9 +122,9 @@
 				</executions>
 				<configuration>
 					<schemaDirectory>src/main/webapp/WEB-INF/xsd</schemaDirectory>
-					<includeSchemas>
+					<!--<includeSchemas>
 						<includeSchema>hr.xsd</includeSchema>
-					</includeSchemas>
+					</includeSchemas>-->
 					<!-- <arguments>-extension -npa -b ${project.basedir}/src/main/xsd/global.xjb</arguments> -->
 				</configuration>
 			</plugin>

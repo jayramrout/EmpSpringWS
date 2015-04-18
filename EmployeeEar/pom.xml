@@ -6,9 +6,9 @@
 	
 	<parent>
 		<groupId>EmployeeGateway</groupId>
-		<artifactId>employee-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
-		<relativePath>../Employee/parent/pom.xml</relativePath>
+		<artifactId>EmpSpringWS</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>pom.xml</relativePath>
 	</parent>
 	
 	<build>
