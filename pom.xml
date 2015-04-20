@@ -8,7 +8,7 @@
 	<name>Employee Parent Object Model</name>
 	<properties>
 		<employee.ws.version>0.0.1-SNAPSHOT</employee.ws.version>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mybatis.version>3.2.8</mybatis.version>
 		<slf4j-log4j12.version>1.7.7</slf4j-log4j12.version>
