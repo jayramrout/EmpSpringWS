@@ -26,7 +26,7 @@
 		<xalan.version>2.7.0</xalan.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<jaxb-api.version>2.2.11</jaxb-api.version>
-		<spring.version>3.1.4.RELEASE</spring.version>
+		<spring.version>4.0.5.RELEASE</spring.version>
 		<commons-lang.version>2.5</commons-lang.version>
 	</properties>
 	<modules>
@@ -150,6 +150,11 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>

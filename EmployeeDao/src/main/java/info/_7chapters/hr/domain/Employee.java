@@ -16,6 +16,8 @@ public class Employee implements Serializable {
 
 	private long employeeId;
 
+	private long managerId;
+
 	private BigDecimal commissionPct;
 
 	private BigDecimal departmentId;
@@ -135,6 +137,14 @@ public class Employee implements Serializable {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+
+	public long getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(long mangerId) {
+		this.managerId = mangerId;
 	}
 
 	public Employee addEmployee(Employee employee) {

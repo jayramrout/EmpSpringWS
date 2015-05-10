@@ -44,9 +44,9 @@
 	</environments>
  -->
 
-
-	<mappers>
+	<!-- Commented the below . Reason : "added <property name="mapperLocations" in employee-dao-context.xml"-->
+	<!--<mappers>
 		<mapper resource="mapper/EMPSqlMap.xml"></mapper>
-	</mappers>
+	</mappers>-->
 
 </configuration>
